@@ -106,6 +106,7 @@
     const resultsContainer = document.getElementById('results');
     const submitButton = document.getElementById('submit');
     const myQuestions = [
+      
       {
         question: "Commonly used data types do not include:",
         answers: {
@@ -148,6 +149,25 @@
         correctAnswer: "c"  
         }
     ];
+
+    
+    let timer = 60;
+    // Timer starts after Start button is pressed 
+    let beginTimer = function() {
+        let countdown = function() {
+            timer--;
+            timerEl.textContent = "Time:" + timer;
+            if (timer === 0) {
+                endTimer();
+            }
+        }
+        let timeInterval = setInterval(countdown, 1000); 
+        let endTimer = function() {
+            clearInterval(timeInterval);
+        }
+        q1();
+    }
+
   
     // Kick things off
     buildQuiz();
